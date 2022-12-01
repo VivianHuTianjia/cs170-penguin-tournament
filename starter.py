@@ -23,7 +23,7 @@ INPUT_SIZE_LIMIT = 1000000
 OUTPUT_SIZE_LIMIT = 10000
 
 
-def write_input(G: nx.Graph, path: str, overwrite: bool=False):
+def write_input(G: nx.Graph, path: str, overwrite: bool=True):
     assert overwrite or not os.path.exists(path), \
         'File already exists and overwrite set to False. Move file or set overwrite to True to proceed.'
     if validate_input(G):
@@ -39,7 +39,7 @@ def read_input(path: str):
             return G
 
 
-def write_output(G: nx.Graph, path: str, overwrite=False):
+def write_output(G: nx.Graph, path: str, overwrite=True):
     assert overwrite or not os.path.exists(path), \
         'File already exists and overwrite set to False. Move file or set overwrite to True to proceed.'
     if validate_output(G):
@@ -134,7 +134,7 @@ def visualize(G: nx.Graph):
     plt.show()
 
 
-def run(solver, in_file: str, out_file: str, overwrite: bool=False):
+def run(solver, in_file: str, out_file: str, overwrite: bool=True):
     instance = read_input(in_file)
     output = solver(instance)
     if output:
@@ -143,12 +143,12 @@ def run(solver, in_file: str, out_file: str, overwrite: bool=False):
     print(f"{str(in_file)}: cost", score(instance))
 
 
-def run_all(solver, in_dir, out_dir, overwrite: bool=False):
+def run_all(solver, in_dir, out_dir, overwrite: bool=True):
     for file in tqdm([x for x in os.listdir(in_dir) if x.endswith('.in')]):
         run(solver, str(Path(in_dir) / file), str(Path(out_dir) / f"{file[:-len('.in')]}.out"), overwrite)
 
 
-def tar(out_dir, overwrite=False):
+def tar(out_dir, overwrite=True):
     path = f'{os.path.basename(out_dir)}.tar'
     assert overwrite or not os.path.exists(path), \
         'File already exists and overwrite set to False. Move file or set overwrite to True to proceed.'
