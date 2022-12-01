@@ -5,10 +5,10 @@
 
 
 # Install packages
-'''get_ipython().run_line_magic('pip', 'install networkx')
+get_ipython().run_line_magic('pip', 'install networkx')
 get_ipython().run_line_magic('pip', 'install numpy')
 get_ipython().run_line_magic('pip', 'install tqdm')
-get_ipython().run_line_magic('pip', 'install matplotlib')'''
+get_ipython().run_line_magic('pip', 'install matplotlib')
 
 
 # In[1]:
