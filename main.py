@@ -5,10 +5,10 @@
 
 
 # Install packages
-get_ipython().run_line_magic('pip', 'install networkx')
+'''get_ipython().run_line_magic('pip', 'install networkx')
 get_ipython().run_line_magic('pip', 'install numpy')
 get_ipython().run_line_magic('pip', 'install tqdm')
-get_ipython().run_line_magic('pip', 'install matplotlib')
+get_ipython().run_line_magic('pip', 'install matplotlib')'''
 
 
 # In[1]:
@@ -185,7 +185,7 @@ def solve(G: nx.Graph):
                                     change = [(v, new_v_team)]
                             if s < best_score:
                                 best_score = s
-                                print(best_score)
+                                #print(best_score)
                                 for node, new_team in change:
                                     best_copy.nodes[node]['team'] = new_team
                 if not modified:
@@ -193,7 +193,7 @@ def solve(G: nx.Graph):
                 if best_score < overall_best_score:
                     overall_best_score = best_score
                     overall_best_copy = best_copy.copy()
-                    print(overall_best_score, 'best')
+                    #print(overall_best_score, 'best')
                     
         for node in G.nodes:
             G.nodes[node]['team'] = overall_best_copy.nodes[node]['team']
